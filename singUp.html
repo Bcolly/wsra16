@@ -13,7 +13,7 @@
 		   media='only screen and (max-width: 480px)'
 		   href='stylesPWS/smartphone.css' />
 		   
-			<script type="text/javascript">
+			<!--<script type="text/javascript">
 				function ikusBalioak(){
 					var sAux="";
 					var frm=document.getElementById("erregistro");
@@ -23,10 +23,13 @@
 					}
 					alert(sAux);
 				}
-			</script>
+			</script>-->
+			<script src="balioztatu.js"></script>
+			
+			
   </head>
   <body>
-  <div id='page-wrap'>
+ <!-- <div id='page-wrap'>
 	<header class='main' id='h1'>
       <span class="right"><a href="/login">LogIn</a> </span>
       <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
@@ -41,18 +44,36 @@
     <section class="main" id="s1">
     
 	
-	<div>
-		<!--Quizzes and credits will be displayed in this spot in future laboratories ...-->
-		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" >
-			<p>Izena * : <input type="text" id="izena" name="izena"/></p>
-			<p>Posta Elektronikoa * : <input type="email" id="maila" name="maila"/></p>
-			<p>Pasahitza * : <input type="password" id="pass" name="pass"/></p>
-			<p>Telefono Zenbakia * : <input type="number" id="telf" name="telf"/></p>
-			<p>Espezialitatea * : <input type="text" id="izena" name="izena"/></p>
-			<p>Interesa Duzun Teknologiak eta Herramintak : <input type="text" id="izena" name="izena"/></p>
-			<p>Irudia : <input type=file size=60 name="irudia"></p><br>
+	<div>-->
+		<form id="erregistro" name="erregistro" onSubmit="balioztatu()" >
+			<br />
+			<p><b>Izena * :</b> <br /><input type="text" id="izena" name="izena" /></p>
+			<br />
+			<p><b>Lehen Abizena * :</b> <br /><input type="text" id="ab1" name="abizena1" /></p>
+			<br />
+			<p><b>Bigarren Abizena * :</b> <br /><input type="text" id="ab2" name="abizena2" /></p>
+			<br />
+			<p><b>Posta Elektronikoa * :</b> <br /><input type="email" id="maila" name="maila" /></p>
+			<br />
+			<p><b> Sexua * :</b> <br /><br /><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak" />Besteak</p>
+			<br />
+			<p><b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass"/></p>
+			<br />
+			<p><b>Telefono Zenbakia * :</b> <br /><input type="text" id="telf" name="telf"/></p>
+			<br />
+			<p><b>Espezialitatea * :</b><br /><select id="espezialitatea" name="espezialitatea">
+				<option value="1">Software Ingenieritza</option>
+				<option value="2">Konputagailuen Ingenieritza</option>
+				<option value="3">Konputazioa</option>
+				<option value="4">"Besterik"</option>
+			</select></p>
+			<br />
+			<p><b>Interesa Duzun Teknologiak eta Herramintak :</b></p>
+			<textarea id="interes" name="interes"></textarea>
+			<br />
 			<input type="submit" value="OK"/>
 		</form>
+		<input type="button" value="HOME" onclick="location.href='./layout.html'" />
 	</div>
     </section>
 	<footer class='main' id='f1'>
