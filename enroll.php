@@ -1,12 +1,21 @@
 <?php
-$niremysqli niremysqli = new mysqli("localhost", "root", "", "probaDBi");
-$sql="INSERT INTO erabiltzailea (Izena, Abizena1, Abizena2, PostaElektronikoa, Sexua, Pasahitza, TelefonoZbkia, Espezialitatea, Interesak) VALUES
-('$_POST[izena]' , '$_POST[abizena1]' ,'$_POST[abizena2]' , '$_POST[maila]' , '$_POST[sex]' , '$_POST[pass]' , '$_POST[telf]' , '$_POST[espezialitatea]' , '$_POST[interes]')";
-if (!$niremy qs li->q y uer ($sql)) {
-	die('Errorea: ' . $niremysqli->error);
+$esteka = mysqli_connect("localhost", "root", "", “Quiz");
+//(“hostinger_aterpea, “hostinger_erab", “pasahitza", “db_izena");
+if (!$esteka){ 
+echo “Hutsegitea MySQLra konetatzerakoan. “ .” . PHP_EOL;
+echo "errno depurazio katsa: " . mysqli_connect_errno().PHP_EOL;
+echo "error depurazio katsa: " . mysqli_connect_error().PHP_EOL;
+exit;
 }
-echo "Erregistro bat gehitu da!";
-echo "<p> <a href='ikusiErabiltzaileak.php'> Erregistroak ikusi</a>";
-$niremysqli->close();
+else{
+	$sql = mysql_query($esteka, "INSERT INTO erabiltzailea() VALUES ()")
+	$ema = mysqli_query($esteka,$sql);
+	if (!$ema){
+		die('Errorea query-a gauzatzerakoan: '.mysqli_error($esteka));
+	}
+	echo “OK”;
+}
+// Konexioa itxi
+mysqli_close($esteka)
 
 ?>
