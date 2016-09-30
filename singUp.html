@@ -25,38 +25,53 @@
 				}
 			</script>-->
 			<script src="balioztatu.js"></script>
+			<script src="gehitu.js"></script>
+			<script>
+				var loadFile = function(event) {
+				var output = document.getElementById('image');
+				output.src = URL.createObjectURL(event.target.files[0]);
+				output.style.display="inline";
+				};
+			</script>
 			
 			
   </head>
   <body>
 
-		<form id="erregistro" name="erregistro" onSubmit="balioztatu()" >
+		<form id="erregistro" name="erregistro" onSubmit="return balioztatu()" > <center>
 			<br />
-			<p><b>Izena * :</b> <br /><input type="text" id="izena" name="izena" /></p>
+			<b>Izena * :</b> <br /><input type="text" id="izena" name="izena" />
 			<br />
-			<p><b>Lehen Abizena * :</b> <br /><input type="text" id="ab1" name="abizena1" /></p>
+			<b>Lehen Abizena * :</b> <br /><input type="text" id="ab1" name="abizena1" />
 			<br />
-			<p><b>Bigarren Abizena * :</b> <br /><input type="text" id="ab2" name="abizena2" /></p>
+			<b>Bigarren Abizena * :</b> <br /><input type="text" id="ab2" name="abizena2" />
 			<br />
-			<p><b>Posta Elektronikoa * :</b> <br /><input type="email" id="maila" name="maila" /></p>
+			<b>Posta Elektronikoa * :</b> <br /><input type="email" id="maila" name="maila" />
 			<br />
-			<p><b> Sexua * :</b> <br /><br /><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak" />Besteak</p>
+			<b> Sexua * :</b> <br /><br /><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak" />Besteak
 			<br />
-			<p><b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass"/></p>
+			<b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass"/>
 			<br />
-			<p><b>Telefono Zenbakia * :</b> <br /><input type="text" id="telf" name="telf"/></p>
+			<b>Telefono Zenbakia * :</b> <br /><input type="text" id="telf" name="telf"/>
 			<br />
-			<p><b>Espezialitatea * :</b><br /><select id="espezialitatea" name="espezialitatea">
+			<b>Espezialitatea * :</b><br /><select id="espezialitatea" name="espezialitatea" onclick="gehitu()">
 				<option value="1">Software Ingenieritza</option>
 				<option value="2">Konputagailuen Ingenieritza</option>
 				<option value="3">Konputazioa</option>
-				<option value="4">"Besterik"</option>
-			</select></p>
+				<option value="4">Besterik</option>
+			</select>
 			<br />
+			<input type="text" id="testua" name="testua" style="display:none" />
 			<p><b>Interesa Duzun Teknologiak eta Herramintak :</b></p>
 			<textarea id="interes" name="interes"></textarea>
 			<br />
+			<b>Irudia :</b>
+			<input type="file" accept="image/*" id="irudi" name="irudi" onchange="loadFile(event)"/>
+			<br />
+			<img id="image" name="image" style="height:200px;width:200px;display:none"/>
+			<br />
 			<input type="submit" value="OK"/>
+			</center>
 		</form>
 		<input type="button" value="HOME" onclick="location.href='./layout.html'" />
 	</div>

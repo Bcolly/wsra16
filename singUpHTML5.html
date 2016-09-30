@@ -14,7 +14,7 @@
 		   href='stylesPWS/smartphone.css' />
 			<script src="balioztatuHTML5.js"></script>
 			<script src="gehitu.js"></script>
-		   <script>
+			<script>
 				var loadFile = function(event) {
 				var output = document.getElementById('image');
 				output.src = URL.createObjectURL(event.target.files[0]);
@@ -23,7 +23,7 @@
 			</script>
   </head>
   <body>
-		<form id="erregistro" name="erregistro" onSubmit="balioztatu()" >
+		<form id="erregistro" name="erregistro" onSubmit="return balioztatu()" method='post' action='enroll.php' > <center>
 			<br />
 			<b>Izena * :</b> <br /><input type="text" id="izena" name="izena" pattern="^[A-Z]{1}[a-z]{1,}" title="Izena letra larriz hasi behar da eta ezin dezake zenbakirik eduki." required/>
 			<br />
@@ -35,7 +35,7 @@
 			<br />
 			<b> Sexua * :</b><br /><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak" />Besteak
 			<br />
-			<b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass" pattern=".{6,}" title="6 karaktere edo gehiago" required/>
+			<b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass" pattern=".{6,15}" title="6-15 karaktere bitartean izan behar du." required/>
 			<br />
 			<b>Telefono Zenbakia * :</b> <br /><input type="text" id="telf" name="telf" pattern="[0-9]{9}" title="telefonoak 9 zenbaki ditu" required/>
 			<br />
@@ -50,14 +50,15 @@
 			<p><b>Interesa Duzun Teknologiak eta Herramintak :</b></p>
 			<textarea id="interes" name="interes"></textarea>
 			<br />
-			<p><b>Irudia :</b></p>
+			<b>Irudia :</b>
 			<input type="file" accept="image/*" id="irudi" name="irudi" onchange="loadFile(event)"/>
 			<br />
 			<img id="image" name="image" style="height:200px;width:200px;display:none"/>
 			<br />
 			<input type="submit" value="OK"/>
+			</center>
 		</form>
-		<input type="button" value="HOME" onclick="location.href='./layout.html'" />
+		<input type="button" value="HOME" onclick="location.href='./layoutHTML5.html'" />
 	</div>
     </section>
 	<footer class='main' id='f1'>
