@@ -1,21 +1,31 @@
 <?php
-$esteka = mysqli_connect("localhost", "root", "", “Quiz");
-//(“hostinger_aterpea, “hostinger_erab", “pasahitza", “db_izena");
-if (!$esteka){ 
-echo “Hutsegitea MySQLra konetatzerakoan. “ .” . PHP_EOL;
-echo "errno depurazio katsa: " . mysqli_connect_errno().PHP_EOL;
-echo "error depurazio katsa: " . mysqli_connect_error().PHP_EOL;
-exit;
-}
-else{
-	$sql = mysql_query($esteka, "INSERT INTO erabiltzailea() VALUES ()")
-	$ema = mysqli_query($esteka,$sql);
-	if (!$ema){
-		die('Errorea query-a gauzatzerakoan: '.mysqli_error($esteka));
-	}
-	echo “OK”;
-}
-// Konexioa itxi
-mysqli_close($esteka)
+$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
+//(â€œhostinger_aterpea, â€œhostinger_erab", â€œpasahitza", â€œdb_izena");
 
+//konexioa zabaldu
+if ($niremysqli->connect_errno) {
+	echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
+}
+
+echo $niremysqli->host_info . "\n";
+
+$sql = "INSERT INTO erabiltzailea(Izena, Abizena1, Abizena2, PostaElektronikoa, Sexua, Pasahitza, TelefonoZbkia, Espezialitatea, Interesak)
+VALUES ('$_POST[izena]' , '$_POST[abizena1]' , '$_POST[abizena2]' , '$_POST[maila]' , '$_POST[sex]' , '$_POST[pass]' , '$_POST[telf]' , '$_POST[espezialitatea]' , '$_POST[interes]')";
+
+echo $sql;
+
+$sql = "INSERT INTO erabiltzailea(Izena, Abizena1, Abizena2, PostaElektronikoa, Sexua, Pasahitza, TelefonoZbkia, Espezialitatea, Interesak)"
+    . "VALUES ('$_POST[izena]' , '$_POST[abizena1]' , '$_POST[abizena2]' , '$_POST[maila]' , '$_POST[sex]' , '$_POST[pass]' , '$_POST[telf]' , '$_POST[espezialitatea]' , '$_POST[interes]')";
+
+	if (!$niremysqli->query($sql)){
+	echo "Taularen sorrerak huts egin: (" .
+	$mysqli->errno . ") " . $mysqli->error;
+	die('Errorea: ' . $niremysqli->error);
+}
+else { echo "OK";}
+
+echo "Erregistro bat gehitu da!";
+echo "<p> <a href='showUsers.php'> Erregistroak ikusi</a>";
+// Konexioa itxi
+$niremysqli->close();
 ?>
