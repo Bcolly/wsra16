@@ -1,11 +1,4 @@
-function balioztatu(){
-		/*var sAux="";
-		var frm=document.getElementById("erregistro");
-		for(i=0;i<frm.elements.length;i++){
-			sAux +="IZENA: " + frm.elements[i].name+"";
-			sAux +="BALIOA: " + frm.elements[i].value+"\n";
-		}
-		alert(sAux);*/
+	function balioztatu(){
 		var aux1 = /[0-9]{9}/;
 		var aux2 = /[a-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/;
 		var aux3 = /[A-Z]{1}[a-z]/;
@@ -16,7 +9,7 @@ function balioztatu(){
 		
 		for(i=0;i<unekoa.elements.length;i++){
 			
-			if(unekoa.elements[i].name=="izena" &&( unekoa.elements[i].value<1 || !aux3.test(unekoa.elements[i].value))){
+			if(unekoa.elements[i].name=="izena" &&(unekoa.elements[i].value<1 || !aux3.test(unekoa.elements[i].value))){
 				//alert("izena hutsik dago");
 				todoVaBien = false;
 				errorea +="IZENA: ez duzu bete, edo txarto adierazi duzu.\n\n";
