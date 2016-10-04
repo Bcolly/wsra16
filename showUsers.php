@@ -1,6 +1,6 @@
 <?php
-//$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
-$niremysqli = new mysqli("localhost", "root", "", "quiz");
+$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
+//$niremysqli = new mysqli("localhost", "root", "", "quiz");
 $giz = $niremysqli->query("SELECT * FROM erabiltzailea");
 echo '<table border=1> <tr> <th> IZENA </th> <th> ABIZENA1
 </th> <th> ABIZENA2 </th> <th> EPOSTA </th> <th> SEXUA </th> <th> TELEFONOA </th> <th> ESPEZIALITATEA </th> <th> INTERESAK </th></tr> ';
