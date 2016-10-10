@@ -5,6 +5,9 @@ if ($niremysqli->connect_errno) {
 echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
 }
 echo $niremysqli->host_info . "\n";
+$patron=array("options"=>array("regexp"=>"/[a-z][0-9]{3}@ikasle\.ehu\.e(s|us)/"));
+if(filter_var($_POST[maila],FILTER_VALIDATE_REGEXP,$patron)){
+
 $argazkia =addslashes(file_get_contents($_FILES['irudi']['tmp_name']));
 $esp = $_POST[espezialitatea];
 echo $esp;
@@ -12,6 +15,7 @@ if ($esp=="Besterik") {
 	$esp = $_POST[testua];
 	echo $esp;
 }
+
 $sql = "INSERT INTO erabiltzailea(Izena, Abizena1, Abizena2, PostaElektronikoa, Sexua, Pasahitza, TelefonoZbkia, Espezialitatea, Interesak, Irudia)
 VALUES ('$_POST[izena]' , '$_POST[abizena1]' , '$_POST[abizena2]' , '$_POST[maila]' , '$_POST[sex]' , '$_POST[pass]' , '$_POST[telf]' , '$esp' , '$_POST[interes]' , '$argazkia')";
 //echo $sql;
@@ -23,5 +27,10 @@ die('Errorea: ' . $niremysqli->error);
 else { echo "OK";}
 echo "Erregistro bat gehitu da!";
 echo "<p> <a href='showUsers_whitImage.php'> Erregistroak ikusi</a>";
+
+}
+else{echo "Emaila txarto gorde da edota txarto adierazita dago";
+	echo "<p> <a href='layout.html> HOME</a>";}
+
 $niremysqli->close();
 ?>
