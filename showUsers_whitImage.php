@@ -14,6 +14,7 @@ while($row = $giz->fetch_assoc()) {
 	echo "</tr>";
 }
 echo '</table>';
+echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";
 $giz->close();
 $niremysqli->close();
 ?>	

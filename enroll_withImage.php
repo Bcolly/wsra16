@@ -5,7 +5,7 @@ if ($niremysqli->connect_errno) {
 echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
 }
 echo $niremysqli->host_info . "\n";
-$patron=array("options"=>array("regexp"=>"/^[a-z][0-9]{3}@ikasle\.ehu\.e(s|us)$/"));
+$patron=array("options"=>array("regexp"=>"/^[a-z][0-9]{3}(@ikasle\.ehu\.e)(s|us)$/"));
 $patron1=array("options"=>array("regexp"=>"/^[A-Z]{1}[a-z]+$/"));
 $patron2=array("options"=>array("regexp"=>"/^[0-9]{9}$/"));
 if(filter_var($_POST[maila],FILTER_VALIDATE_REGEXP,$patron) 
