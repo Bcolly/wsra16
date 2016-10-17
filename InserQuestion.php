@@ -36,19 +36,10 @@
 		}
 		echo $niremysqli->host_info . "\n";
 		session_start();
-		$badago = $niremysqli->query("SELECT COUNT(GalderaZbkia) FROM `galdera`");
-		$total = $badago->fetch_assoc();
-		$lerroak = $total["COUNT(GalderaZbkia)"];
-		if($lerroak==0){
-			$galdZenb=1;
-		}else{
-			$galdZenb = $lerroak+1;
-		}
-		echo $galdZenb;
 		$eposta = $_SESSION['user'];
 		echo $eposta;
-		$sql = "INSERT INTO galdera(GalderaZbkia,Galdera,Erantzuna,Zailtasuna,PostaElektronikoa) 
-		VALUES ($galdZenb , '$_GET[question]' , '$_GET[answer]' , '$_GET[zailtasuna]', '$eposta')";
+		$sql = "INSERT INTO galdera(Galdera,Erantzuna,Zailtasuna,PostaElektronikoa) 
+		VALUES ('$_GET[question]' , '$_GET[answer]' , '$_GET[zailtasuna]', '$eposta')";
 		if (!$niremysqli->query($sql)){
 			echo "Taularen sorrerak huts egin: (" .
 			$mysqli->errno . ") " . $mysqli->error;
