@@ -27,17 +27,16 @@
 		echo $niremysqli->host_info . "\n";
 		$eposta = $_POST['user'];
 		
-		$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
-		$giz = $niremysqli->query($sql);
 		$giz = $niremysqli->query("SELECT Pasahitza FROM erabiltzailea WHERE PostaElektronikoa='$eposta'");
 		$row = $giz->fetch_assoc();
 		if ($_POST['pass']===$row["Pasahitza"]) {
+			$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
+			$giz = $niremysqli->query($sql);
 			session_start();
 			$_SESSION['user'] = $eposta;
 			header("Location: ./InserQuestion.php");
 			exit;
 		}
-		else{echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";}
-
 	}
+	echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";
 ?>
