@@ -1,6 +1,6 @@
 <?php
-//$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
-$niremysqli = new mysqli("localhost", "root", "", "quiz");
+include "./konektatu.php";
+
 $giz = $niremysqli->query("SELECT * FROM erabiltzailea");
 echo '<table border=1> <tr> <th> IZENA </th> <th> ABIZENA1
 </th> <th> ABIZENA2 </th> <th> EPOSTA </th> <th> SEXUA </th> <th> TELEFONOA </th> <th> ESPEZIALITATEA </th> <th> INTERESAK </th> <th> IRUDIA </th></tr> ';
@@ -14,7 +14,7 @@ while($row = $giz->fetch_assoc()) {
 	echo "</tr>";
 }
 echo '</table>';
-echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";
+echo "<p> <a href='../layout.html'> -=HOME=-</a> </p>";
 $giz->close();
 $niremysqli->close();
 ?>	

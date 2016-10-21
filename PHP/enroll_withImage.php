@@ -1,11 +1,7 @@
 <?php
-//$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
-$niremysqli = new mysqli("localhost", "root", "", "quiz");
-if ($niremysqli->connect_errno) {
-echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
-}
-echo $niremysqli->host_info . "\n";
-$patron=array("options"=>array("regexp"=>"/^[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)$/"));
+include "./konektatu.php";
+
+$patron=array("options"=>array("regexp"=>"/^[a-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)$/"));
 $patron1=array("options"=>array("regexp"=>"/^[A-Z]{1}[a-z]+$/"));
 $patron2=array("options"=>array("regexp"=>"/^[0-9]{9}$/"));
 if(filter_var($_POST[maila],FILTER_VALIDATE_REGEXP,$patron) 
@@ -18,7 +14,6 @@ if(filter_var($_POST[maila],FILTER_VALIDATE_REGEXP,$patron)
 
 	$argazkia =addslashes(file_get_contents($_FILES['irudi']['tmp_name']));
 	$esp = $_POST[espezialitatea];
-	echo $esp;
 	if ($esp=="Besterik") {
 		$esp = $_POST[testua];
 		echo $esp;
@@ -44,7 +39,7 @@ else{echo "Emaila txarto gorde da edota txarto adierazita dago.";
 	 echo "Telefonoa txarto adierazita dago.";
 	}
 
-echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";
+echo "<p> <a href='../layout.html'> -=HOME=-</a> </p>";
 
 $niremysqli->close();
 ?>

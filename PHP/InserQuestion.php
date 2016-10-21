@@ -29,13 +29,8 @@
 
 <?php
 	if(isset($_GET['question'],$_GET['answer'])){
-		//$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
-		$niremysqli = new mysqli("localhost", "root", "", "quiz");
-		if ($niremysqli->connect_errno) {
-			echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
-		}
-		echo $niremysqli->host_info . "\n";
-		session_start();
+		include "./konektatu.php";
+		
 		$eposta = $_SESSION['user'];
 		echo $eposta;
 		$sql = "INSERT INTO galdera(Galdera,Erantzuna,Zailtasuna,PostaElektronikoa) 
@@ -67,7 +62,6 @@
 		} else {
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
-		echo " todo bien";
 		echo $ip;
 		$sqla = "INSERT INTO ekintzak(KonexioIdentitifikazioa,PostaElektronikoa,EkintzaMota,IPa)
 				VALUES('$lerroak', '$eposta', '$ekintza', '$ip')";
@@ -77,11 +71,12 @@
 			die('Errorea: ' . $niremysqli->error);
 		}
 		else { echo "Ekintza gehitu da";}
+		//XML empieza aqui
 		
 		
 		
 		$niremysqli->close();
 	}
 		
-	echo "<p> <a href='layout.html'>-=HOME=-</a> </p>";
+	echo "<p> <a href='../layout.html'>-=HOME=-</a> </p>";
 ?>

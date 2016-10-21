@@ -13,8 +13,8 @@
 		   media='only screen and (max-width: 480px)'
 		   href='stylesPWS/smartphone.css' />
 		   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-			<script src="balioztatuHTML5.js"></script>
-			<script src="gehitu.js"></script>
+			<script src="./JS/balioztatuHTML5.js"></script>
+			<script src="./JS/gehitu.js"></script>
 			<script>
 				var loadFile = function(event) {
 				var output = document.getElementById('image');
@@ -24,7 +24,7 @@
 			</script>
   </head>
   <body>
-		<form id="erregistro" name="erregistro" onSubmit="return balioztatu()" method='post' action='enroll_withImage.php' enctype="multipart/form-data" > <center>
+		<form id="erregistro" name="erregistro" onSubmit="return balioztatu()" method='post' action='./PHP/enroll_withImage.php' enctype="multipart/form-data" > <center>
 			<br />
 			<b>Izena * :</b> <br /><input type="text" id="izena" name="izena" pattern="^[A-Z]{1}[a-z]{1,}" title="Izena letra larriz hasi behar da eta ezin dezake zenbakirik eduki." required/>
 			<br />

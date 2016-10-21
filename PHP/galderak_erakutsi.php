@@ -1,6 +1,5 @@
 <?php
-//$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
-$niremysqli = new mysqli("localhost", "root", "", "quiz");
+include "./konektatu.php";
 $giz = $niremysqli->query("SELECT Galdera, Zailtasuna FROM galdera");
 echo '<table border=1> <tr> <th> GALDERA </th> <th> ZAILTASUNA
 </th>';
@@ -11,9 +10,8 @@ while($row = $giz->fetch_assoc()) {
 	echo "</tr>";
 }
 echo '</table>';
-echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";
+echo "<p> <a href='../layout.html'> -=HOME=-</a> </p>";
 
-session_start();
 if(strlen($_SESSION['user'])==0){
 	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 		$ip = $_SERVER['HTTP_CLIENT_IP'];

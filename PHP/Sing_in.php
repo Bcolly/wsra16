@@ -19,12 +19,8 @@
 
 <?php
 	if(isset($_POST['user'],$_POST['pass'])){
-		//$niremysqli = new mysqli("mysql.hostinger.es", "u513906433_obeas", "oier0886", "u513906433_quiz");
-		$niremysqli = new mysqli("localhost", "root", "", "quiz");
-		if ($niremysqli->connect_errno) {
-			echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
-		}
-		echo $niremysqli->host_info . "\n";
+		include "./konektatu.php";
+		
 		$eposta = $_POST['user'];
 		
 		$giz = $niremysqli->query("SELECT Pasahitza FROM erabiltzailea WHERE PostaElektronikoa='$eposta'");
@@ -32,11 +28,11 @@
 		if ($_POST['pass']===$row["Pasahitza"]) {
 			$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
 			$giz = $niremysqli->query($sql);
-			session_start();
+			//session_start();
 			$_SESSION['user'] = $eposta;
 			header("Location: ./InserQuestion.php");
 			exit;
 		}
 	}
-	echo "<p> <a href='layout.html'> -=HOME=-</a> </p>";
+	echo "<p> <a href='../layout.html'> -=HOME=-</a> </p>";
 ?>
