@@ -32,7 +32,7 @@
 		include "./konektatu.php";
 		
 		$eposta = $_SESSION['user'];
-		echo $eposta;
+		//SQL-n galdera txertatu
 		$sql = "INSERT INTO galdera(Galdera,Erantzuna,Zailtasuna,PostaElektronikoa) 
 		VALUES ('$_GET[question]' , '$_GET[answer]' , '$_GET[zailtasuna]', '$eposta')";
 		if (!$niremysqli->query($sql)){
@@ -40,8 +40,25 @@
 			$mysqli->errno . ") " . $mysqli->error;
 			die('Errorea: ' . $niremysqli->error);
 		}
-		else { echo "Galdera gehitu da";}
+		//XML-n galdera txertatu
+		$xml = simplexml_load_file('../XML/galderak.xml');
+		$galdera = $xml->addChild('assessmentItem');
+			$galdera->addAttribute('complexity', $_GET[zailtasuna]);
+			$galdera->addAttribute('subject', 'default');
 		
+			$galderaT = $galdera->addChild('itemBody');
+				$galderaT->addChild('p',$_GET['question']);
+			$erantzuna = $galdera->addChild('correctResponse');
+				$erantzuna->addChild('value',$_GET[answer]);
+
+		if($xml->asXML("../XML/galderak.xml") === FALSE) {
+			echo "<br/>Galderak ez dira XML fitxategian gorde";
+		}
+		else {
+			echo "<br/><a href='../XML/galderak.xml'>Ikusi galderak XML bidez</a>";
+		}
+		
+		//konexioa datubasean gehitu
 		$aux = "SELECT IdKon,PostaElektronikoa FROM konexioak";
 		$giz = $niremysqli->query($aux);
 		
@@ -70,13 +87,9 @@
 			$mysqli->errno . ") " . $mysqli->error;
 			die('Errorea: ' . $niremysqli->error);
 		}
-		else { echo "Ekintza gehitu da";}
-		//XML empieza aqui
-		
-		
+		else { echo "<p>Ekintza gehitu da</p>";}
 		
 		$niremysqli->close();
 	}
-		
 	echo "<p> <a href='../layout.html'>-=HOME=-</a> </p>";
 ?>

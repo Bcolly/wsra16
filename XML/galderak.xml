@@ -16,4 +16,12 @@
 			<value>Phalloides</value>
 		</correctResponse>
 	</assessmentItem>
-<assessmentItem complexity="4" subject="mikologia"><itemBody><p>Amanita cesarea jangarria da. Bai ala Ez?</p></itemBody><correctResponse><value>Bai</value></correctResponse></assessmentItem></assessmentItems>
+<assessmentItem complexity="4" subject="mikologia">
+		<itemBody>
+			<p>Amanita cesarea jangarria da. Bai ala Ez?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Bai</value>
+		</correctResponse>
+	</assessmentItem>
+<assessmentItem complexity="1" subject="default"><itemBody><p>Txakurrak nola egiten du?</p></itemBody><correctResponse><value>Guau!</value></correctResponse></assessmentItem></assessmentItems>
