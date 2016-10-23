@@ -21,6 +21,9 @@
 				<option value="4">4</option>
 				<option value="5">5</option>
 			</select>
+			<br/>
+			<b>Gaia: </b>
+			<input type="text" id="subject" name="subject" />
 			<br />
 			<input type="submit" id="submit" value="Bidali galdera" />
 	</form>
@@ -44,7 +47,7 @@
 		$xml = simplexml_load_file('../XML/galderak.xml');
 		$galdera = $xml->addChild('assessmentItem');
 			$galdera->addAttribute('complexity', $_GET[zailtasuna]);
-			$galdera->addAttribute('subject', 'default');
+			$galdera->addAttribute('subject', $_GET[subject]);
 		
 			$galderaT = $galdera->addChild('itemBody');
 				$galderaT->addChild('p',$_GET['question']);
@@ -55,7 +58,7 @@
 			echo "<br/>Galderak ez dira XML fitxategian gorde";
 		}
 		else {
-			echo "<br/><a href='../XML/galderak.xml'>Ikusi galderak XML bidez</a>";
+			echo "<br/><a href='./seeXMLQuestions.php'>Ikusi galderak XML bidez</a>";
 		}
 		
 		//konexioa datubasean gehitu
