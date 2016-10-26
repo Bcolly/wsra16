@@ -1,6 +1,19 @@
 function bilatu() {
-	alert ("programa asi da");
-	var xml = document.getElementById('xml').contentDocument;
+	if (window.XMLHttpRequest){ // code for IE7+, Firefox, Chrome, Opera, Safari
+	  var xml = new XMLHttpRequest();
+	  alert('0,1');
+	}else{// code for IE6, IE5
+	  var xml =  ActiveXObject("Microsoft.XMLHTTP");
+	  alert('0,2');
+	}
+	xml.open("GET",'../XML/erabiltzaileak.xml',false);
+	alert('0,4');
+	xml.send(null);
+	alert('0,5');
+ 
+	var xmlText = xml.responseText;
+	var xmlResult = xml.responseXML;
+	//var xml = document.getElementById("xml").contentDocument;
 	var emailList = xml.getElementByTagName("eposta");
 	var izenList = xml.getElementByTagName("izena");
 	var ab1List = xml.getElementByTagName("abizena1");
