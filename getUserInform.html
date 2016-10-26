@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <html>
+  <head>
+    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	<title>Erabiltzailearen informazioa</title>
+    <link rel='stylesheet' type='text/css' href='stylesPWS/style.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+		   href='stylesPWS/wide.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (max-width: 480px)'
+		   href='stylesPWS/smartphone.css' />
+		   <script src="./JS/erabiltzaileaBilatu.js"></script>
+  </head>
+  <body>
+	<div id='page-wrap'>
+		<header class='main' id='h1'>
+			<span class="right"><a href="./PHP/Sing_in.php">LogIn</a> </span>
+			<span class="right"><a href="./PHP/Log_out.php">LogOut</a> </span>
+			<h2>Erabiltzaileak ikusi</h2>
+		</header>
+		<nav class='main' id='n1' role='navigation'>
+			<span><a href='layout.html'>Home</a></span>
+			<span><a href='/quizzes'>Quizzes</a></span>
+			<span><a href='credits.html'>Credits</a></span>
+			<span><a href='singUp.html'>Sing Up</a></span>
+			<span><a href='getUserInform.html'>Bilatu erabiltzaile bat</a></span>
+			<span><a href='singUpHTML5.html'>Sing Up HTML5-ekin</a></span>
+		</nav>
+			<div>
+				<object id="xml" data="../XML/erabiltzaileak.xml" type="text/xml" style="display:none"></object>
+				<form id="bilatu" name="bilatu">
+					<br />
+					<font color="black"><b>Posta Elektronikoa :</b></font><input type="text" id="posta" name="posta" />
+					<br />
+					<input type="button" value="Bilatu" onclick="bilatu()"/>
+					<br /><br />
+					<font color="black"><b>Izena :</b></font><input type="text" id="izena" name="izena" style="display:none"/>
+					<br />
+					<font color="black"><b>Lehen abizena :</b></font><input type="text" id="abizena1" name="abizena1"style="display:none"/>
+					<br />
+					<font color="black"><b>Bigarren abizena :</b></font><input type="text" id="abizena2" name="abizena2" style="display:none"/>
+					<br />
+					<font color="black"><b>Telefonoa :</b></font><input type="text" id="telefonoa" name="telefonoa" style="display:none"/>
+				</form>
+			</div>
+	
+		<footer class='main' id='f1'>
+		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
+		<a href='https://github.com'>Link GITHUB</a>
+		</footer>
+	</div>
+</div>
+</body>
+</html>
