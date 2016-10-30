@@ -30,7 +30,7 @@
 			$giz = $niremysqli->query($sql);
 			//session_start();
 			$_SESSION['user'] = $eposta;
-			header("Location: ./InserQuestion.php");
+			header("Location: ./handlingQuizes.php");
 			exit;
 		}
 	}

@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" language = "javascript">	
+		function galderaSartu(ques,ans,zail,subj){	
+			xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function(){
+				alert (xhttp.readyState);
+				if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
+					document.getElementById("galderaSartu").style.display = "inline-block";
+					document.getElementById("galderaSartu").innerHTML= xhttp.responseText;
+				}
+			};
+				xhttp.open("GET","insertQuestion.php?"+"question="+ques+"&answer="+ans+"&zailtasuna="+zail+"&subject="+subj, true);
+				xhttp.send();
+		}
+	</script>
 </head>
 <body>
 	<br />
 	<b>Kaixo </b>
 	<br />
 	<p><b>Galdera berria sortu:</b></p>
-	<form id="iquestion" name="iquestion" onSubmit='InsertQuestion.php' method="GET">
+	<form id="iquestion" name="iquestion" method="GET" onsubmit="galderaSartu(question.value,answer.value,zailtasuna.value,subject.value)">
 			<b>Galdera* : </b>
 			<input type="text" id="question" name="question" />
 			<br />
-			<b>Erantzuna* :</b>		
+			<b>Erantzuna* :</b>
 			<input type="text" id="answer" name="answer" />
 			<br />
 			<b>Zailtasuna :</b><br /><select id="zailtasuna" name="zailtasuna">
@@ -26,9 +41,16 @@
 			<input type="text" id="subject" name="subject" />
 			<br />
 			<input type="submit" id="submit" value="Bidali galdera" />
+			<input type="button" value="NireGalderak" onClick="erakutsi()" />
 	</form>
+	<div id="galderaSartu" style="display:none">
+	</div><br />
+	<div id="galderakIkusi" style="display:none">
+	</div><br />
+		<p> <a href='../layout.html'>-=HOME=-</a> </p>
 </body>
 </html>
+
 
 <?php
 	if(isset($_GET['question'],$_GET['answer'])){
@@ -94,5 +116,5 @@
 		
 		$niremysqli->close();
 	}
-	echo "<p> <a href='../layout.html'>-=HOME=-</a> </p>";
+
 ?>
