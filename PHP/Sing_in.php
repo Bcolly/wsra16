@@ -14,6 +14,7 @@
 			<br />
 			<input type="submit" id="submit" value="Sartu" />
 	</form>
+	<p> <a href='../layout.html'> -=HOME=-</a> </p>
 </body>
 </html>
 
@@ -28,11 +29,9 @@
 		if ($_POST['pass']===$row["Pasahitza"]) {
 			$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
 			$giz = $niremysqli->query($sql);
-			//session_start();
 			$_SESSION['user'] = $eposta;
 			header("Location: ./handlingQuizes.php");
 			exit;
 		}
 	}
-	echo "<p> <a href='../layout.html'> -=HOME=-</a> </p>";
 ?>
