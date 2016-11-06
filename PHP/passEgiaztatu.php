@@ -4,7 +4,7 @@
 	require_once('../lib/class.wsdlcache.php');
 	
 	//soap_server motako objektua sortzen dugu
-	$ns="../XML/passEgiaztatu.xml"
+	$ns="http://oibeas16.esy.es/PHP/passEgiaztatu.php/egiaztatuP"
 	$server = new soap_server;
 	$server->configureWSDL('egiaztatuP',$ns);
 	$server->wsdl->schemaTargetNamespace=$ns;
@@ -20,10 +20,12 @@
 		$erantzuna = 'BALIOZKOA';
 		$ondo = true;
 		$fitx = fopen("../toppasswords.txt", "r") or die("Ezin izan da fitxategia zabaldu");
-		while ((($line=fgets($fitx))!==false) || $ondo) {
-			if ($line==$pass){
-				$ondo=false;
-				$erantzuna = 'BALIOGABEA';
+		while (!feof($fitx)) {
+			$line = fgets($fitx);
+			$line = str_replace("\n", "", $line);
+			$line = str_replace("\r", "", $line);
+			if($line === $pass){
+				$erantzuna = "BALIOGABEA";
 			}
 		}
 		fclose($fitx);

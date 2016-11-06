@@ -1,3 +1,7 @@
+	var balioak = false;
+	var eposta = false;
+	var pasahitza = false;
+	
 	function balioztatu(){
 		var aux1 = /[0-9]{9}/;
 		var aux2 = /[a-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/;
@@ -44,6 +48,38 @@
 				mezua +="BALIOA: " + unekoa.elements[i].value+"\n";
 			}
 		}
-		if(todoVaBien){alert(mezua);}
+		if(todoVaBien){
+			balioak = true;
+			alert(mezua);
+		}
 		else {alert(errorea);}
+	}
+	
+	function balioztatuEposta(email){
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+		if ((xhttp.readyState==4)&&(xhttp.status==200)){
+			if(xhttp.responseText == "BAI"){
+				eposta = true;
+			}
+		}};
+		xhttp.open("GET","../PHP/egiaztatuMatrikulaBezero.php?maila=" + email, true);
+		xhttp.send();
+	}
+	function balioztatuPasahitza(pass){
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+		if ((xhttp.readyState==4)&&(xhttp.status==200)){
+			if(xhttp.responseText == "BALIOZKOA"){
+				pasahitza = true;
+			}
+		}};
+		xhttp.open("GET","../PHP/passEgiaztatuBezero.php?pass=" + pass, true);
+		xhttp.send();
+	}
+	
+	function egiaztapenak() {
+		balioztatu();
+		if (balioak && eposta && pasahitza) {return true;}
+		else {return false;}
 	}

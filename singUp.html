@@ -24,7 +24,7 @@
 			</script>
   </head>
   <body>
-		<form id="erregistro" name="erregistro" onSubmit="return balioztatu()" method='post' action='./PHP/egiaztatuMatrikula_pass.php' enctype="multipart/form-data" > <center>
+		<form id="erregistro" name="erregistro" onSubmit="return egiaztapenak()" method='post' action='./PHP/enroll_withImage.php' enctype="multipart/form-data" > <center>
 			<br />
 			<b>Izena * :</b> <br /><input type="text" id="izena" name="izena" />
 			<br />
@@ -32,11 +32,11 @@
 			<br />
 			<b>Bigarren Abizena * :</b> <br /><input type="text" id="ab2" name="abizena2" />
 			<br />
-			<b>Posta Elektronikoa * :</b> <br /><input type="text" id="maila" name="maila" />
+			<b>Posta Elektronikoa * :</b> <br /><input type="text" id="maila" name="maila" onblur="balioztatuEposta(maila.value)" />
 			<br />
 			<b> Sexua * :</b> <br /><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak" />Besteak
 			<br />
-			<b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass"/>
+			<b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass" onblur="balioztatuPasahitza(pass.value)"/>
 			<br />
 			<b>Telefono Zenbakia * :</b> <br /><input type="text" id="telf" name="telf"/>
 			<br />
