@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+	<types>
+		<xsd:schema targetNamespace="http://oibeas16.esy.es/PHP/passEgiaztatu.php?wsdl">
+		<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+		<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" /> 
+		</xsd:schema>
+	</types>
+	<message name="egiaztatuPRequest">
+		<part name="pass" type="xsd:string" />
+	
+	</message>
+	<message name="egiaztatuPResponse">
+		<part name="ans" type="xsd:string" />
+	</message>
+	<portType name="passPortType">
+		<operation name="egiaztatuP">
+			<input message="tns:egiaztatuPRequest"/>
+			<output message="tns:egiaztatuPResponse"/>
+		</operation>
+	</portType>
+
+	<service name="passEgiaztatu">
+		<soap:address location="http://oibeas16.esy.es/PHP/passEgiaztatu.php" />
+	</service>
+</definitions>
