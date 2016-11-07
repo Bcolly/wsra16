@@ -55,17 +55,27 @@
 		else {alert(errorea);}
 	}
 	
-	function balioztatuEposta(email){
+	/*function balioztatuEposta(email){
+		alert(email);
 		xhttp = new XMLHttpRequest();
+		
 		xhttp.onreadystatechange = function(){
-		if ((xhttp.readyState==4)&&(xhttp.status==200)){
-			if(xhttp.responseText == "BAI"){
-				eposta = true;
+			alert(xhttp.readyState);
+			if ((xhttp.readyState==4)&&(xhttp.status==200)){
+				alert(xhttp.responseText);
+				if(xhttp.responseText == "BAI"){
+					eposta = true;
+				}
+				else if(xhttp.responseText == "EZ"){
+					eposta = false;
+				}
 			}
-		}};
+		};
+		
 		xhttp.open("GET","../PHP/egiaztatuMatrikulaBezero.php?maila=" + email, true);
 		xhttp.send();
-	}
+	}*/
+	
 	function balioztatuPasahitza(pass){
 		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
@@ -80,6 +90,14 @@
 	
 	function egiaztapenak() {
 		balioztatu();
-		if (balioak && eposta && pasahitza) {return true;}
-		else {return false;}
+		alert (balioak);
+		alert (eposta);
+		alert (pasahitza);
+		return true;
+		if (balioak && eposta && pasahitza) {
+			//return true;
+		}
+		else {
+			//return false;
+		}
 	}

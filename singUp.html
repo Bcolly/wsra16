@@ -22,9 +22,35 @@
 				output.style.display="inline";
 				};
 			</script>
+			<script>
+			var eposta = false;
+				function balioztatuEposta(email){
+					alert(email);
+					xhttp = new XMLHttpRequest();
+		
+					xhttp.onreadystatechange = function(){
+						alert(xhttp.readyState);
+						alert(xhttp.status);
+						//if ((xhttp.readyState==4)&&(xhttp.status==200)){
+						if (xhttp.readyState==4){
+							alert(xhttp.responseText);
+							if(xhttp.responseText == "BAI"){
+								eposta = true;
+							}
+							else if(xhttp.responseText == "EZ"){
+								eposta = false;
+							}
+						}
+					};
+		
+		xhttp.open("GET","../PHP/egiaztatuMatrikulaBezero.php?maila=" + email, true);
+		xhttp.send();
+		alert("11111");
+	}
+			</script>
   </head>
-  <body>
-		<form id="erregistro" name="erregistro" onSubmit="return egiaztapenak()" method='post' action='./PHP/enroll_withImage.php' enctype="multipart/form-data" > <center>
+  <body>									<!--  onSubmit="return egiaztapenak()" 							action='./PHP/enroll_withImage.php'-->
+		<form id="erregistro" name="erregistro" onSubmit="return balioztatuEposta(maila.value)" method='post'  enctype="multipart/form-data" > <center>
 			<br />
 			<b>Izena * :</b> <br /><input type="text" id="izena" name="izena" />
 			<br />

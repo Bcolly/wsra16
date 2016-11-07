@@ -1,35 +1,34 @@
 <?php
 	//nusoap.php klasea gehitzen dugu
-	require_once('http://oibeas16.esy.es/lib/nuSOAP/nusoap.php');
-	require_once('http://oibeas16.esy.es/lib/nuSOAP/class.wsdlcache.php');
+	require_once('../lib/nusoap.php');
+	require_once('../lib/class.wsdlcache.php');
 	
 	//soap_server motako objektua sortzen dugu
-	$ns="http://oibeas16.esy.es/PHP/passEgiaztatu.php/egiaztatuP"
+	$ns="http://localhost/wsra16/PHP/passEgiaztatu.php?wsdl";
 	$server = new soap_server;
 	$server->configureWSDL('egiaztatuP',$ns);
 	$server->wsdl->schemaTargetNamespace=$ns;
 	
 	//inplementatu nahi dugun funtzioa erregistratzen dugu
 	$server->register('egiaztatuP',
-		array('pass'=>'xsd:string'),
-		array('ans'=>'xsd:string'),$ns);
+		array('x'=>'xsd:string'),
+		array('y'=>'xsd:string'),
+		$ns);
 	
 	
 	//funtzioa inplementatzen dugu
 	function egiaztatuP($pass){
-		$erantzuna = 'BALIOZKOA';
-		$ondo = true;
 		$fitx = fopen("../toppasswords.txt", "r") or die("Ezin izan da fitxategia zabaldu");
 		while (!feof($fitx)) {
 			$line = fgets($fitx);
 			$line = str_replace("\n", "", $line);
 			$line = str_replace("\r", "", $line);
 			if($line === $pass){
-				$erantzuna = "BALIOGABEA";
+				return "BALIOGABEA";
 			}
 		}
 		fclose($fitx);
-		return $erantzuna;
+		return "BALIOZKOA";
 	}
 	
 	//nusoap klaseko sevice metodoari dei egiten diogu
