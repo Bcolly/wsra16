@@ -72,7 +72,7 @@
 			}
 		};
 		
-		xhttp.open("GET","../PHP/egiaztatuMatrikulaBezero.php?maila=" + email, true);
+		xhttp.open("GET","../PHP/Bezeroa_egiaztatuMatrikula.php?maila=" + email, true);
 		xhttp.send();
 	}*/
 	
@@ -84,7 +84,7 @@
 				pasahitza = true;
 			}
 		}};
-		xhttp.open("GET","../PHP/passEgiaztatuBezero.php?pass=" + pass, true);
+		xhttp.open("GET","../PHP/Bezeroa_passEgiaztatu.php?pass=" + pass, true);
 		xhttp.send();
 	}
 	

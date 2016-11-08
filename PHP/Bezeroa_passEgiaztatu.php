@@ -5,11 +5,11 @@
 	
 	//soapclient motako objektua sortzen dugu
 	//erabiliko den SOAP zerbitzua non dagoen zehazten urla
-	$soapclient = new nusoap_client('http://localhost/wsra16/PHP/passEgiaztatu.php?wsdl',false);
+	$soapclient = new nusoap_client('http://localhost/wsra16/PHP/Zerbitzua_passEgiaztatu.php?wsdl',true);
 	
 	//Web-Service-n inplementatu dugun funtzioari dei egiten diogu
 	//eta itzultzen diguna inprimatzen dugu
-	$result = $soapclient->call('egiaztatuP', array('pasahitza' => $_POST['pass']));
+	$result = $soapclient->call('egiaztatuP', array('x' => $_POST['pass']));
 	
 	echo $_POST['pass'];
 	print_r($result);

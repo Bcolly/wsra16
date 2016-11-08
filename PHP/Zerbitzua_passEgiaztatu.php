@@ -4,7 +4,7 @@
 	require_once('../lib/class.wsdlcache.php');
 	
 	//soap_server motako objektua sortzen dugu
-	$ns="http://localhost/wsra16/PHP/passEgiaztatu.php?wsdl";
+	$ns="http://localhost/wsra16/PHP/Zerbitzua_passEgiaztatu.php?wsdl";
 	$server = new soap_server;
 	$server->configureWSDL('egiaztatuP',$ns);
 	$server->wsdl->schemaTargetNamespace=$ns;
@@ -32,6 +32,6 @@
 	}
 	
 	//nusoap klaseko sevice metodoari dei egiten diogu
-	$HTTP_RAW_POST_DATA = isset($$HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
+	$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
 	$server->service($HTTP_RAW_POST_DATA);
 ?>
