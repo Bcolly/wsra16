@@ -9,11 +9,8 @@
 	
 	//Web-Service-n inplementatu dugun funtzioari dei egiten diogu
 	//eta itzultzen diguna inprimatzen dugu
-	$result = $soapclient->call('egiaztatuP', array('x' => $_POST['pass']));
+	$result = $soapclient->call('egiaztatuP', array('x' => $_GET['pass']));
 	
-	echo $_POST['pass'];
-	print_r($result);
-	echo '<h2>Request</h2><pre>'.htmlspecialchars($soapclient->request, ENT_QUOTES).'</pre>';
-	echo '<h2>Response</h2><pre>'.htmlspecialchars($soapclient->response, ENT_QUOTES).'</pre>';
-	//echo '<h2>Debug</h2><pre>'.htmlspecialchars($soapclient->debug_str, ENT_QUOTES).'</pre>';
+	echo $result;
+	
 ?>

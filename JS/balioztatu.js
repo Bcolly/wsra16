@@ -55,36 +55,38 @@
 		else {alert(errorea);}
 	}
 	
-	/*function balioztatuEposta(email){
+	function balioztatuEposta(email){
 		alert(email);
 		xhttp = new XMLHttpRequest();
 		
 		xhttp.onreadystatechange = function(){
-			alert(xhttp.readyState);
 			if ((xhttp.readyState==4)&&(xhttp.status==200)){
 				alert(xhttp.responseText);
 				if(xhttp.responseText == "BAI"){
+					alert("bien");
 					eposta = true;
 				}
 				else if(xhttp.responseText == "EZ"){
+					alert("mal");
 					eposta = false;
 				}
 			}
 		};
 		
-		xhttp.open("GET","../PHP/Bezeroa_egiaztatuMatrikula.php?maila=" + email, true);
+		xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_egiaztatuMatrikula.php?maila=" + email, true);
 		xhttp.send();
-	}*/
+	}
 	
 	function balioztatuPasahitza(pass){
 		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 		if ((xhttp.readyState==4)&&(xhttp.status==200)){
+			alert(xhttp.responseText);
 			if(xhttp.responseText == "BALIOZKOA"){
 				pasahitza = true;
 			}
 		}};
-		xhttp.open("GET","../PHP/Bezeroa_passEgiaztatu.php?pass=" + pass, true);
+		xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
 		xhttp.send();
 	}
 	
@@ -93,11 +95,10 @@
 		alert (balioak);
 		alert (eposta);
 		alert (pasahitza);
-		return true;
 		if (balioak && eposta && pasahitza) {
-			//return true;
+			return true;
 		}
 		else {
-			//return false;
+			return false;
 		}
 	}

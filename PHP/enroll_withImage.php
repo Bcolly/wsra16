@@ -1,16 +1,16 @@
 <?php
 include "./konektatu.php";
 
-$patron=array("options"=>array("regexp"=>"/^[a-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)$/"));
+$patron=array("options"=>array("regexp"=>"/[a-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/"));
 $patron1=array("options"=>array("regexp"=>"/^[A-Z]{1}[a-z]+$/"));
 $patron2=array("options"=>array("regexp"=>"/^[0-9]{9}$/"));
-if(filter_var($_POST[maila],FILTER_VALIDATE_REGEXP,$patron) 
-&& filter_var($_POST[izena],FILTER_VALIDATE_REGEXP,$patron1) 
-&& filter_var($_POST[abizena1],FILTER_VALIDATE_REGEXP,$patron1) 
-&& filter_var($_POST[abizena2],FILTER_VALIDATE_REGEXP,$patron1) 
-&& filter_var($_POST[telf],FILTER_VALIDATE_REGEXP,$patron2)
-&& (strlen($_POST[pass])>6)
-&& (strlen($_POST[pass])<15)){
+if(filter_var($_POST['maila'],FILTER_VALIDATE_REGEXP,$patron) 
+&& filter_var($_POST['izena'],FILTER_VALIDATE_REGEXP,$patron1) 
+&& filter_var($_POST['abizena1'],FILTER_VALIDATE_REGEXP,$patron1) 
+&& filter_var($_POST['abizena2'],FILTER_VALIDATE_REGEXP,$patron1) 
+&& filter_var($_POST['telf'],FILTER_VALIDATE_REGEXP,$patron2)
+&& (strlen($_POST['pass'])>=6)
+&& (strlen($_POST['pass'])<15)){
 
 	$argazkia =addslashes(file_get_contents($_FILES['irudi']['tmp_name']));
 	$esp = $_POST[espezialitatea];
