@@ -4,7 +4,8 @@
 	require_once('../lib/class.wsdlcache.php');
 	
 	//soap_server motako objektua sortzen dugu
-	$ns="http://localhost/wsra16/PHP/Zerbitzua_passEgiaztatu.php?wsdl";
+	//$ns="http://localhost/wsra16/PHP/Zerbitzua_passEgiaztatu.php?wsdl";
+	$ns="http://oibeas16.esy.es/PHP/Zerbitzua_passEgiaztatu.php?wsdl";
 	$server = new soap_server;
 	$server->configureWSDL('egiaztatuP',$ns);
 	$server->wsdl->schemaTargetNamespace=$ns;

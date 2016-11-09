@@ -72,8 +72,8 @@
 				}
 			}
 		};
-		
-		xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_egiaztatuMatrikula.php?maila=" + email, true);
+		//xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_egiaztatuMatrikula.php?maila=" + email, true);
+		xhttp.open("GET","http://oibeas16.esy.es/PHP/Bezeroa_egiaztatuMatrikula.php?maila=" + email, true);
 		xhttp.send();
 	}
 	
@@ -85,8 +85,10 @@
 			if(xhttp.responseText == "BALIOZKOA"){
 				pasahitza = true;
 			}
+			else {pasahitza = false;}
 		}};
-		xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
+		//xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
+		xhttp.open("GET","http://oibeas16.esy.es/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
 		xhttp.send();
 	}
 	
