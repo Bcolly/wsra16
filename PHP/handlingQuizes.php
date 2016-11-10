@@ -40,14 +40,12 @@
 		}
 		
 		function refresh() {
+			galderakZati();
 			var myVar = setInterval(galderakZati, 5000);
 		}
 	</script>
 </head>
 <body onload="refresh()">
-	<br />
-	<b>Kaixo </b>
-	<br />
 	<p><b>Galdera berria sortu:</b></p>
 	<form id="iquestion" name="iquestion" method="GET" onsubmit="galderaSartu(question.value,answer.value,zailtasuna.value,subject.value)">
 			<b>Galdera* : </b>

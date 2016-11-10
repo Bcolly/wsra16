@@ -10,6 +10,7 @@
 		var errorea = "TXARTO ADIERAZITAKO ATALAK:\n\n";
 		var todoVaBien = true;
 		var unekoa=document.getElementById("erregistro");
+		var pasahitza = document.getElementById("egiazPass").value;
 		
 		for(i=0;i<unekoa.elements.length;i++){
 			
@@ -28,10 +29,10 @@
 				todoVaBien = false;
 				errorea +="ABIZENA_2: ez duzu bete, edo txarto adierazi duzu.\n\n";
 			}
-			else if(unekoa.elements[i].name=="pass" && unekoa.elements[i].value.length<6 && unekoa.elements[i].value.length>15){
+			else if(unekoa.elements[i].name=="pass" && (unekoa.elements[i].value.length<6 || unekoa.elements[i].value!=pasahitza)){
 				//alert("pasahitza ez duzu sartu, edo ez du luzeera nahikorik");
 				todoVaBien = false;
-				errorea +="PASAHITZA: ez duzu bete edo pasahitzak ez dauka luzeera nahikorik.\n\n";
+				errorea +="PASAHITZA: pasahitza ez duzu ongi bete edo ez dute pasahizak kointziditzen.\n\n";
 			}
 			else if(unekoa.elements[i].name=="telf" && !aux1.test(unekoa.elements[i].value)){
 				//alert("telefonoa adierazi gabe, edo txarto adierazi duzu");
@@ -56,18 +57,14 @@
 	}
 	
 	function balioztatuEposta(email){
-		alert(email);
 		xhttp = new XMLHttpRequest();
 		
 		xhttp.onreadystatechange = function(){
 			if ((xhttp.readyState==4)&&(xhttp.status==200)){
-				alert(xhttp.responseText);
 				if(xhttp.responseText == "BAI"){
-					alert("bien");
 					eposta = true;
 				}
 				else if(xhttp.responseText == "EZ"){
-					alert("mal");
 					eposta = false;
 				}
 			}
@@ -81,7 +78,6 @@
 		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 		if ((xhttp.readyState==4)&&(xhttp.status==200)){
-			alert(xhttp.responseText);
 			if(xhttp.responseText == "BALIOZKOA"){
 				pasahitza = true;
 			}

@@ -25,38 +25,25 @@
   </head>
   <body>								  <!--  onSubmit="return egiaztapenak()" 			   action='./PHP/enroll_withImage.php'-->
 		<form id="erregistro" name="erregistro" onSubmit="return egiaztapenak()" method='post' action='./PHP/enroll_withImage.php' enctype="multipart/form-data" > <center>
-			<br />
-			<b>Izena * :</b> <br /><input type="text" id="izena" name="izena" />
-			<br />
-			<b>Lehen Abizena * :</b> <br /><input type="text" id="ab1" name="abizena1" />
-			<br />
-			<b>Bigarren Abizena * :</b> <br /><input type="text" id="ab2" name="abizena2" />
-			<br />
-			<b>Posta Elektronikoa * :</b> <br /><input type="text" id="maila" name="maila" onblur="balioztatuEposta(maila.value)" />
-			<br />
-			<b> Sexua * :</b> <br /><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak" />Besteak
-			<br />
-			<b>Pasahitza * :</b> <br /><input type="password" id="pass" name="pass" onblur="balioztatuPasahitza(pass.value)"/>
-			<br />
-			<b>Telefono Zenbakia * :</b> <br /><input type="text" id="telf" name="telf"/>
-			<br />
-			<b>Espezialitatea * :</b><br /><select id="espezialitatea" name="espezialitatea" onclick="gehitu()">
+			<br><b>Izena * :</b><br/><input type="text" id="izena" name="izena"/></br>
+			<br><b>Lehen Abizena * :</b><br/><input type="text" id="ab1" name="abizena1"/></br>
+			<br><b>Bigarren Abizena * :</b><br/><input type="text" id="ab2" name="abizena2"/></br>
+			<br><b>Posta Elektronikoa * :</b><br/><input type="text" id="maila" name="maila" onblur="balioztatuEposta(maila.value)"/></br>
+			<br><b> Sexua * :</b><br/><input type="radio" id="sex1" name="sex" value="mutila" />Mutila  <input type="radio" id="sex2" name="sex" value="neska" />Neska  <input type="radio" id="sex3" name="sex" value="besteak"/>Besteak</br>
+			<br><b>Pasahitza * :</b><br/><input type="password" id="pass" name="pass" onblur="balioztatuPasahitza(pass.value)"/></br>
+			<br><b>Pasahitza balioztatu * :</b><br/><input type="password" id="egiazPass" name="EgiazPass"/></br>
+			<br><b>Telefono Zenbakia * :</b><br/><input type="text" id="telf" name="telf"/></br>
+			<br><b>Espezialitatea * :</b><br/><select id="espezialitatea" name="espezialitatea" onclick="gehitu()"></br>
 				<option value="Software Ingenieritza">Software Ingenieritza</option>
 				<option value="Konputagailuen Ingenieritza">Konputagailuen Ingenieritza</option>
 				<option value="Konputazioa">Konputazioa</option>
 				<option value="Besterik">Besterik</option>
 			</select>
-			<br />
-			<input type="text" id="testua" name="testua" style="display:none" />
-			<p><b>Interesa Duzun Teknologiak eta Herramintak :</b></p>
-			<textarea id="interes" name="interes"></textarea>
-			<br />
-			<b>Irudia :</b>
-			<input type="file" accept="image/*" id="irudi" name="irudi" onchange="loadFile(event)"/>
-			<br />
+			<br><input type="text" id="testua" name="testua" style="display:none"/><br>
+			<br><b>Interesa Duzun Teknologiak eta Herramintak :</b><br/><textarea id="interes" name="interes"></textarea></br>
+			<br><b>Irudia :</b><br/><input type="file" accept="image/*" id="irudi" name="irudi" onchange="loadFile(event)"/></br>
 			<img id="image" name="image" style="height:200px;width:200px;display:none"/>
-			<br />
-			<input type="submit" value="OK"/>
+			<br><input type="submit" value="OK"/></br>
 			</center>
 		</form>
 		<input type="button" value="HOME" onclick="location.href='./layout.html'" />
