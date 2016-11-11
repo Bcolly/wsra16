@@ -30,7 +30,13 @@
 			$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
 			$giz = $niremysqli->query($sql);
 			$_SESSION['user'] = $eposta;
-			header("Location: ./handlingQuizes.php");
+			$ikaslePatroia=array("options"=>array("regexp"=>"/[a-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/"));
+			if(filter_var($eposta,FILTER_VALIDATE_REGEXP,$ikaslePatroia){
+				header("Location: ./handlingQuizes.php");
+			}
+			else {
+				header("Location: ./reviewingQuizes.php");
+			}	
 			exit;
 		}
 	}

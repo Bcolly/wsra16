@@ -29,7 +29,7 @@
 				todoVaBien = false;
 				errorea +="ABIZENA_2: ez duzu bete, edo txarto adierazi duzu.\n\n";
 			}
-			else if(unekoa.elements[i].name=="pass" && (unekoa.elements[i].value.length<6 || unekoa.elements[i].value!=pasahitza)){
+			else if(unekoa.elements[i].name=="pass" && (unekoa.elements[i].value.length<6 || unekoa.elements[i].value.localeCompare(pasahitza)!=0)){
 				//alert("pasahitza ez duzu sartu, edo ez du luzeera nahikorik");
 				todoVaBien = false;
 				errorea +="PASAHITZA: pasahitza ez duzu ongi bete edo ez dute pasahizak kointziditzen.\n\n";
@@ -64,7 +64,7 @@
 				if(xhttp.responseText == "BAI"){
 					eposta = true;
 				}
-				else if(xhttp.responseText == "EZ"){
+				else{
 					eposta = false;
 				}
 			}
@@ -75,24 +75,27 @@
 	}
 	
 	function balioztatuPasahitza(pass){
-		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-		if ((xhttp.readyState==4)&&(xhttp.status==200)){
-			if(xhttp.responseText == "BALIOZKOA"){
-				pasahitza = true;
-			}
-			else {pasahitza = false;}
-		}};
-		//xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
-		xhttp.open("GET","http://oibeas16.esy.es/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
-		xhttp.send();
+		if (pass >= 1) {
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+			if ((xhttp.readyState==4)&&(xhttp.status==200)){
+				if(xhttp.responseText == "BALIOZKOA"){
+					pasahitza = true;
+				}
+				else {pasahitza = false;}
+			}};
+			//xhttp.open("GET","http://localhost/wsra16/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
+			xhttp.open("GET","http://oibeas16.esy.es/PHP/Bezeroa_passEgiaztatu.php?pass="+pass, true);
+			xhttp.send();
+		}
+		else {pasahitza = false;}
 	}
 	
 	function egiaztapenak() {
 		balioztatu();
-		alert (balioak);
-		alert (eposta);
-		alert (pasahitza);
+		alert ("1"+balioak);
+		alert ("2"+eposta);
+		alert ("3"+pasahitza);
 		if (balioak && eposta && pasahitza) {
 			return true;
 		}
