@@ -31,7 +31,7 @@
 			$giz = $niremysqli->query($sql);
 			$_SESSION['user'] = $eposta;
 			$ikaslePatroia=array("options"=>array("regexp"=>"/[a-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/"));
-			if(filter_var($eposta,FILTER_VALIDATE_REGEXP,$ikaslePatroia){
+			if(filter_var($eposta,FILTER_VALIDATE_REGEXP,$ikaslePatroia)){
 				header("Location: ./handlingQuizes.php");
 			}
 			else {
