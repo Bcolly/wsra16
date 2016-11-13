@@ -1,8 +1,9 @@
 <?php
-	/*if(strlen($_SESSION['user'])==0){
+	include "./konektatu.php";
+	if(strlen($_SESSION['user'])==0 || strcmp($_SESSION['user'],"web000@ehu.es")!=0){
 		header("Location:./Sign_in.php");
 	}
-	else{*/
+	else{
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,5 +36,5 @@
 </body>
 </html>
 <?php
-	//}
+	}
 ?>
