@@ -2,10 +2,11 @@
 	var eposta = false;
 	var pasahitza = false;
 	
+	var aux1 = /[0-9]{9}/;
+	var aux2 = /[a-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/;
+	var aux3 = /[A-Z]{1}[a-z]/;
+	
 	function balioztatu(){
-		var aux1 = /[0-9]{9}/;
-		var aux2 = /[a-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/;
-		var aux3 = /[A-Z]{1}[a-z]/;
 		var mezua = "";
 		var errorea = "TXARTO ADIERAZITAKO ATALAK:\n\n";
 		var todoVaBien = true;
@@ -75,7 +76,7 @@
 	}
 	
 	function balioztatuPasahitza(pass){
-		if (pass >= 1) {
+		if (pass.length >= 1) {
 			xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
 			if ((xhttp.readyState==4)&&(xhttp.status==200)){
@@ -93,9 +94,6 @@
 	
 	function egiaztapenak() {
 		balioztatu();
-		alert ("1"+balioak);
-		alert ("2"+eposta);
-		alert ("3"+pasahitza);
 		if (balioak && eposta && pasahitza) {
 			return true;
 		}
@@ -103,3 +101,23 @@
 			return false;
 		}
 	}
+	
+	function aldatu(erab, pass, passEgi){
+		if (!pasahitza || (pass.localeCompare(passEgi) != 0) || !aux2.test(erab) || (pass.length<6)){
+			alert("Error: Datuak txarto adierazita");
+		}
+		else {
+			xhttp = new XMLHttpRequest();
+			
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
+					alert(xhttp.responseText);
+				}
+			};
+				xhttp.open("GET","http://oibeas16.esy.es/PHP/passAldatu.php?user="+erab+"&pass="+pass, false);
+				//xhttp.open("GET","http://localhost/wsra16/PHP/passAldatu.php?user="+erab+"&pass="+pass, false);
+				xhttp.send();
+				pasahitza=false;
+				document.getElementById("update").style.display = "none";
+		}
+	}		

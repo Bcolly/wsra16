@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="../JS/balioztatu.js"></script>
 </head>
 <body>
 	<p><b>AUTENTIFIKATU ZAITEZ:</b></p>
@@ -14,6 +15,21 @@
 			<br />
 			<input type="submit" id="submit" value="Sartu" />
 	</form>
+	<input type="button" value="Pasahitza ahaztu dut" onclick='document.getElementById("update").style.display = "inline";'>
+	<br/><br/>
+	<form id="update" name="update" onSubmit='aldatu(userA.value,passA.value,passEgi.value)' method="POST" style="display:none">
+			<p><b>Pasahitz Berria:</b></p>
+			<b>Erabiltzailea: </b>
+			<input type="text" id="userA" name="userA" />
+			<br />
+			<b>Pasahitza :</b>
+			<input type="password" id="passA" name="passA" onblur="balioztatuPasahitza(passA.value)"/>
+			<br />
+			<b>Errepikatu pasahitza :</b>
+			<input type="password" id="passEgi" name="passEgi" />
+			<br />
+			<input type="submit" id="submit" value="Aldatu" />
+	</form>
 	<p> <a href='../layout.html'> -=HOME=-</a> </p>
 </body>
 </html>
@@ -23,10 +39,12 @@
 		include "./konektatu.php";
 		
 		$eposta = $_POST['user'];
+		//pasahitza sha1 erabiliz kriptografiatu
+		$passcript = sha1($_POST['pass']);
 		
 		$giz = $niremysqli->query("SELECT Pasahitza FROM erabiltzailea WHERE PostaElektronikoa='$eposta'");
 		$row = $giz->fetch_assoc();
-		if ($_POST['pass']===$row["Pasahitza"]) {
+		if ($passcript===$row["Pasahitza"]) {
 			$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
 			$giz = $niremysqli->query($sql);
 			$_SESSION['user'] = $eposta;
