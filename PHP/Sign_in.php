@@ -35,16 +35,27 @@
 </html>
 
 <?php
-	if(isset($_POST['user'],$_POST['pass'])){
 		include "./konektatu.php";
-		
+		if(!isset($_SESSION['kont'])){
+		$_SESSION['kont']=0;
+		}
+		if(isset($_POST['user'],$_POST['pass'])){
+
+		if(!isset($_SESSION[$_POST['user']])){
+			$_SESSION[$_POST['user']]="DESBLOKEATUTA";
+		}
+		else{
+			if($_SESSION[$_POST['user']]=="BLOKEATUTA"){
+				echo("<a href='./desblokeo.php'> -=Desblokeatu kontua=-</a>");
+			}
+		}
 		$eposta = $_POST['user'];
 		//pasahitza sha1 erabiliz kriptografiatu
 		$passcript = sha1($_POST['pass']);
-		
 		$giz = $niremysqli->query("SELECT Pasahitza FROM erabiltzailea WHERE PostaElektronikoa='$eposta'");
 		$row = $giz->fetch_assoc();
-		if ($passcript===$row["Pasahitza"]) {
+		if ($passcript===$row["Pasahitza"] && $_SESSION[$_POST['user']]=="DESBLOKEATUTA") {
+			$_SESSION['kont']=0;
 			$sql = "INSERT INTO konexioak(PostaElektronikoa) VALUES ('$eposta')";
 			$giz = $niremysqli->query($sql);
 			$_SESSION['user'] = $eposta;
@@ -56,6 +67,20 @@
 				header("Location: ./reviewingQuizes.php");
 			}	
 			exit;
+		}
+		else{
+			if($_SESSION['kont']==2){
+				
+				$_SESSION[$_POST['user']]="BLOKEATUTA";
+				
+				echo("Kontua blokeatua izan da.");
+				echo("Pasahitza ahaztu baduzu, alda dezakezu.");
+				$_SESSION['kont']=0;
+				echo("<a href='./desblokeo.php'> -=Desblokeatu kontua=-</a>");
+			}
+			else{
+				$_SESSION['kont']++;
+			}
 		}
 	}
 ?>
