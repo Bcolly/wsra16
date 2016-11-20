@@ -9,7 +9,7 @@
 			method='post' onsubmit='aldatu($row[GalderaZbkia],
 			question.value,
 			zailtasuna.value)'>
-			<td><input type='text' id='user' name='user' value='$row[PostaElektronikoa]' style='width:200px;'/></td>
+			<td><input type='text' id='user' name='user' value='$row[PostaElektronikoa]' style='width:200px;' readonly/></td>
 			<td><input type='text' id='question' name='question' value='$row[Galdera]' style='width:150px;'/></td>
 			<td><input type='text' id='zailtasuna' name='zailtasuna' value='$row[Zailtasuna]'/></td>
 			<td><input type='submit' value='Eguneratu'></td>
