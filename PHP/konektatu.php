@@ -5,5 +5,5 @@
 		echo "Huts egin du konexioak MySQL-ra: (" . $niremysqli-> connect_errno . ") " . $niremysqli-> connect_error;
 	}
 	
-	session_start();
+	session_start();	
 ?>
